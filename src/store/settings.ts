@@ -71,10 +71,10 @@ export const useSettingsStore = create<SettingsStore>()(
         heroHeight: 96,
         setHeroHeight: (heroHeight) => set({ heroHeight }),
 
-        wheelOfAbilityWidth: Math.round(window.innerWidth * 0.2),
+        wheelOfAbilityWidth: Math.round(window.innerWidth * 0.3),
         setWheelOfAbilityWidth: (wheelOfAbilityWidth) =>
           set({ wheelOfAbilityWidth }),
-        wheelOfAbilityHeight: Math.round(window.innerWidth * 0.2),
+        wheelOfAbilityHeight: Math.round(window.innerWidth * 0.3),
         setWheelOfAbilityHeight: (wheelOfAbilityHeight) =>
           set({ wheelOfAbilityHeight }),
         wheelOfAbilityOverflowZone: 50,
