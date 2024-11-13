@@ -1,0 +1,10 @@
+.app {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+canvas {
+  background-color: rgb(255, 255, 255);
+}

@@ -1,0 +1,12 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  interpolate-size: allow-keywords;
+  transition-behavior: allow-discrete;
+  touch-action: none;
+}

@@ -1,0 +1,49 @@
+.wheel-of-ability-appear-area {
+  --color-bg: hsla(15 50 50 / 50%);
+  position: absolute;
+  top: calc(var(--y-position) - var(--self-width) / 2);
+  left: calc(var(--x-position) - var(--self-height) / 2);
+  width: var(--self-width);
+  height: var(--self-height);
+  border-radius: calc(var(--self-width) / 2);
+  background-color: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel-of-ability-zone {
+  --color-bg: hsla(0 0 100 / 50%);
+  position: absolute;
+
+  width: var(--self-width);
+  height: var(--self-height);
+  border-radius: calc(var(--self-width) / 2);
+  background-color: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(
+    hsla(var(--angle) var(--speed) 50 / var(--shadow-alfa)) 0px 0px 16px
+  );
+  transform: rotateZ(var(--rotate));
+
+  .wheel-of-ability {
+    --color-bg: hsla(0 0 100 / 50%);
+    position: absolute;
+    top: calc(var(--y-position-center, 50%) - var(--self-width) / 2);
+    left: calc(var(--x-position-center, 50%) - var(--self-height) / 2);
+    width: var(--self-width);
+    height: var(--self-height);
+    border-radius: calc(var(--self-width) / 2);
+    background-color: var(--color-bg);
+    transition: all 100ms linear;
+    transform: rotateZ(var(--rotate)) translateX(calc(-2 * var(--self-width)));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ability {
+      transform: rotateZ(var(--rotate));
+    }
+  }
+}

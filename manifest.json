@@ -1,0 +1,63 @@
+{
+  "short_name": "ron",
+  "name": "ron: 2D",
+  "icons": [
+    {
+      "src": "/ron/images/icons-vector-white.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "media": "(prefers-color-scheme: dark)"
+    },
+    {
+      "src": "/ron/images/icons-vector-black.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "media": "(prefers-color-scheme: light)"
+    },
+    {
+      "src": "/ron/images/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/ron/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/ron/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/ron",
+  "background_color": "#008080",
+  "display": "standalone",
+  "scope": "/ron",
+  "description": "Intuitive app for self manage your finance",
+  "screenshots": [
+    {
+      "src": "/ron/images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/ron/images/screenshot2.png",
+      "type": "image/png",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/ron/settings",
+      "accept": {
+        "application/json": [".json"]
+      }
+    }
+  ]
+}

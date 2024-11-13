@@ -1,0 +1,35 @@
+.hero-appear-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--self-width);
+  height: 100dvh;
+  background-color: hsla(0 0 10 / 10%);
+}
+
+.hero-zone {
+  --color-bg: hsla(0 0 100 / 50%);
+  position: absolute;
+  top: calc(var(--y-position) - var(--self-width) / 2);
+  left: calc(var(--x-position) - var(--self-height) / 2);
+  width: var(--self-width);
+  height: var(--self-height);
+  border-radius: calc(var(--self-width) / 2);
+  background-color: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(
+    hsla(var(--angle) var(--speed) 50 / var(--shadow-alfa)) 0px 0px 16px
+  );
+  transition: all 100ms linear;
+  .hero {
+    --color-bg: hsla(100 100 50 / 50%);
+    position: absolute;
+    width: var(--self-width);
+    height: var(--self-height);
+    border-radius: calc(var(--self-width) / 2);
+    background-color: var(--color-bg);
+    transform: rotateZ(var(--rotate));
+  }
+}
