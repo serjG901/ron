@@ -35,7 +35,7 @@
   ],
   "start_url": "/ron",
   "background_color": "#008080",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "landscape",
   "scope": "/ron",
   "description": "Intuitive app for self manage your finance",
