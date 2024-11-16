@@ -35,8 +35,10 @@ export default function DirectionAndSpeedController() {
   );
 
   const [isShow, setIsShow] = useState(false);
-  const [startPositionX, setStartPositionX] = useState(0);
-  const [startPositionY, setStartPositionY] = useState(0);
+  const [startPositionX, setStartPositionX] = useState(
+    directionAndSpeedControllerWidth
+  );
+  const [startPositionY, setStartPositionY] = useState(deviceHeight / 2);
   const [
     directionAndSpeedControllerCenterX,
     setDirectionAndSpeedControllerCenterX,
@@ -175,7 +177,7 @@ export default function DirectionAndSpeedController() {
         className='direction-and-speed-controller-zone'
         style={
           {
-            visibility: isShow ? "visible" : "hidden",
+            opacity: isShow ? 1 : 0,
             "--self-width": directionAndSpeedControllerWidth * 2 + "px",
             "--self-height": directionAndSpeedControllerHeight * 2 + "px",
             "--x-position": startPositionX + "px",

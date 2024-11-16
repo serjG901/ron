@@ -10,6 +10,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 1.5s ease-out;
+  opacity: 1;
+  @starting-style {
+    top: var(--y-position);
+    left: var(--x-position);
+    opacity: 0;
+  }
 }
 
 .wheel-of-ability-zone {

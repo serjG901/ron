@@ -19,10 +19,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
   filter: drop-shadow(
     hsla(var(--angle) var(--speed) 50 / var(--shadow-alfa)) 0px 0px 16px
   );
-  transition: all 100ms linear;
+  transition: filter 100ms linear, opacity 1s linear;
   .direction-and-speed-controller {
     --color-bg: hsla(0 0 100 / 50%);
     position: absolute;
@@ -33,5 +34,8 @@
     border-radius: calc(var(--self-width) / 2);
     background-color: var(--color-bg);
     transition: all 100ms linear;
+  }
+  @starting-style {
+    opacity: 1;
   }
 }

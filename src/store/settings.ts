@@ -57,11 +57,11 @@ export const useSettingsStore = create<SettingsStore>()(
         deviceHeight: 0,
         setDeviceHeight: (deviceHeight) => set({ deviceHeight }),
 
-        directionAndSpeedControllerWidthPercent: 25,
+        directionAndSpeedControllerWidthPercent: 20,
         setDirectionAndSpeedControllerWidthPercent: (
           directionAndSpeedControllerWidthPercent
         ) => set({ directionAndSpeedControllerWidthPercent }),
-        directionAndSpeedControllerHeightPercent: 25,
+        directionAndSpeedControllerHeightPercent: 20,
         setDirectionAndSpeedControllerHeightPercent: (
           directionAndSpeedControllerHeightPercent
         ) => set({ directionAndSpeedControllerHeightPercent }),
@@ -101,7 +101,7 @@ export const useSettingsStore = create<SettingsStore>()(
     },
     {
       name: `${appName}-game-settings`,
-      version: 7,
+      version: 8,
     }
   )
 );
