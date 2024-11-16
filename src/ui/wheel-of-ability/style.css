@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 1.5s ease-out;
+  transition: all 1.5s ease-out, opacity 3s linear;
   opacity: 1;
   @starting-style {
     top: var(--y-position);
