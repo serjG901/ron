@@ -3,21 +3,26 @@ import { persist } from "zustand/middleware";
 import { name as appName } from "../../package.json";
 
 interface SettingsStore {
-  directionAndSpeedControllerWidth: number; //controller width
-  setDirectionAndSpeedControllerWidth: (
-    directionAndSpeedControllerWidth: number
+  deviceWidth: number;
+  setDeviceWidth: (deviceWidth: number) => void;
+  deviceHeight: number;
+  setDeviceHeight: (deviceHeight: number) => void;
+
+  directionAndSpeedControllerWidthPercent: number; //controller width
+  setDirectionAndSpeedControllerWidthPercent: (
+    directionAndSpeedControllerWidthPercent: number
   ) => void;
-  directionAndSpeedControllerHeight: number; //same height
-  setDirectionAndSpeedControllerHeight: (
-    directionAndSpeedControllerHeight: number
+  directionAndSpeedControllerHeightPercent: number; //same height
+  setDirectionAndSpeedControllerHeightPercent: (
+    directionAndSpeedControllerHeightPercent: number
   ) => void;
-  directionAndSpeedControllerOverflowZone: number; // percent of overflow controller from zone
-  setDirectionAndSpeedControllerOverflowZone: (
-    directionAndSpeedControllerOverflowZone: number
+  directionAndSpeedControllerOverflowZonePercent: number; // percent of overflow controller from zone
+  setDirectionAndSpeedControllerOverflowZonePercent: (
+    directionAndSpeedControllerOverflowZonePercent: number
   ) => void;
-  directionAndSpeedControllerNoSensetiveZone: number; //percent of controller size for no sensetive zone
-  setDirectionAndSpeedControllerNoSensetiveZone: (
-    directionAndSpeedControllerNoSensetiveZone: number
+  directionAndSpeedControllerNoSensetiveZonePercent: number; //percent of controller size for no sensetive zone
+  setDirectionAndSpeedControllerNoSensetiveZonePercent: (
+    directionAndSpeedControllerNoSensetiveZonePercent: number
   ) => void;
   directionAndSpeedControllerAreaPercent: number; //  percent from screen width what area placed
   setDirectionAndSpeedControllerAreaPercent: (
@@ -29,15 +34,17 @@ interface SettingsStore {
   heroHeight: number;
   setHeroHeight: (heroHeight: number) => void;
 
-  wheelOfAbilityWidth: number;
-  setWheelOfAbilityWidth: (wheelOfAbilityWidth: number) => void;
-  wheelOfAbilityHeight: number;
-  setWheelOfAbilityHeight: (wheelOfAbilityHeight: number) => void;
-  wheelOfAbilityOverflowZone: number;
-  setWheelOfAbilityOverflowZone: (wheelOfAbilityOverflowZone: number) => void;
-  wheelOfAbilityNoSensetiveZone: number;
-  setWheelOfAbilityNoSensetiveZone: (
-    wheelOfAbilityNoSensetiveZone: number
+  wheelOfAbilityWidthPercent: number;
+  setWheelOfAbilityWidthPercent: (wheelOfAbilityWidthPercent: number) => void;
+  wheelOfAbilityHeightPercent: number;
+  setWheelOfAbilityHeightPercent: (wheelOfAbilityHeightPercent: number) => void;
+  wheelOfAbilityOverflowZonePercent: number;
+  setWheelOfAbilityOverflowZonePercent: (
+    wheelOfAbilityOverflowZonePercent: number
+  ) => void;
+  wheelOfAbilityNoSensetiveZonePercent: number;
+  setWheelOfAbilityNoSensetiveZonePercent: (
+    wheelOfAbilityNoSensetiveZonePercent: number
   ) => void;
 }
 
@@ -45,22 +52,27 @@ export const useSettingsStore = create<SettingsStore>()(
   persist(
     (set) => {
       return {
-        directionAndSpeedControllerWidth: 48,
-        setDirectionAndSpeedControllerWidth: (
-          directionAndSpeedControllerWidth
-        ) => set({ directionAndSpeedControllerWidth }),
-        directionAndSpeedControllerHeight: 48,
-        setDirectionAndSpeedControllerHeight: (
-          directionAndSpeedControllerHeight
-        ) => set({ directionAndSpeedControllerHeight }),
-        directionAndSpeedControllerOverflowZone: 15,
-        setDirectionAndSpeedControllerOverflowZone: (
-          directionAndSpeedControllerOverflowZone
-        ) => set({ directionAndSpeedControllerOverflowZone }),
-        directionAndSpeedControllerNoSensetiveZone: 30,
-        setDirectionAndSpeedControllerNoSensetiveZone: (
-          directionAndSpeedControllerNoSensetiveZone
-        ) => set({ directionAndSpeedControllerNoSensetiveZone }),
+        deviceWidth: 0,
+        setDeviceWidth: (deviceWidth) => set({ deviceWidth }),
+        deviceHeight: 0,
+        setDeviceHeight: (deviceHeight) => set({ deviceHeight }),
+
+        directionAndSpeedControllerWidthPercent: 10,
+        setDirectionAndSpeedControllerWidthPercent: (
+          directionAndSpeedControllerWidthPercent
+        ) => set({ directionAndSpeedControllerWidthPercent }),
+        directionAndSpeedControllerHeightPercent: 10,
+        setDirectionAndSpeedControllerHeightPercent: (
+          directionAndSpeedControllerHeightPercent
+        ) => set({ directionAndSpeedControllerHeightPercent }),
+        directionAndSpeedControllerOverflowZonePercent: 15,
+        setDirectionAndSpeedControllerOverflowZonePercent: (
+          directionAndSpeedControllerOverflowZonePercent
+        ) => set({ directionAndSpeedControllerOverflowZonePercent }),
+        directionAndSpeedControllerNoSensetiveZonePercent: 30,
+        setDirectionAndSpeedControllerNoSensetiveZonePercent: (
+          directionAndSpeedControllerNoSensetiveZonePercent
+        ) => set({ directionAndSpeedControllerNoSensetiveZonePercent }),
         directionAndSpeedControllerAreaPercent: 40,
         setDirectionAndSpeedControllerAreaPercent: (
           directionAndSpeedControllerAreaPercent
@@ -71,18 +83,20 @@ export const useSettingsStore = create<SettingsStore>()(
         heroHeight: 96,
         setHeroHeight: (heroHeight) => set({ heroHeight }),
 
-        wheelOfAbilityWidth: Math.round(window.innerWidth * 0.2),
-        setWheelOfAbilityWidth: (wheelOfAbilityWidth) =>
-          set({ wheelOfAbilityWidth }),
-        wheelOfAbilityHeight: Math.round(window.innerWidth * 0.2),
-        setWheelOfAbilityHeight: (wheelOfAbilityHeight) =>
-          set({ wheelOfAbilityHeight }),
-        wheelOfAbilityOverflowZone: 50,
-        setWheelOfAbilityOverflowZone: (wheelOfAbilityOverflowZone) =>
-          set({ wheelOfAbilityOverflowZone }),
-        wheelOfAbilityNoSensetiveZone: 20,
-        setWheelOfAbilityNoSensetiveZone: (wheelOfAbilityNoSensetiveZone) =>
-          set({ wheelOfAbilityNoSensetiveZone }),
+        wheelOfAbilityWidthPercent: 20,
+        setWheelOfAbilityWidthPercent: (wheelOfAbilityWidthPercent) =>
+          set({ wheelOfAbilityWidthPercent }),
+        wheelOfAbilityHeightPercent: 20,
+        setWheelOfAbilityHeightPercent: (wheelOfAbilityHeightPercent) =>
+          set({ wheelOfAbilityHeightPercent }),
+        wheelOfAbilityOverflowZonePercent: 50,
+        setWheelOfAbilityOverflowZonePercent: (
+          wheelOfAbilityOverflowZonePercent
+        ) => set({ wheelOfAbilityOverflowZonePercent }),
+        wheelOfAbilityNoSensetiveZonePercent: 20,
+        setWheelOfAbilityNoSensetiveZonePercent: (
+          wheelOfAbilityNoSensetiveZonePercent
+        ) => set({ wheelOfAbilityNoSensetiveZonePercent }),
       };
     },
     {

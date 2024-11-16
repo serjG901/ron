@@ -8,16 +8,23 @@ const wheelOffset = 0;
 
 export default function WheelOfAbility() {
   const [
-    wheelOfAbilityWidth,
-    wheelOfAbilityHeight,
-    wheelOfAbilityNoSensetiveZone,
+    deviceWidth,
+    deviceHeight,
+    wheelOfAbilityWidthPercent,
+    wheelOfAbilityHeightPercent,
+    wheelOfAbilityNoSensetiveZonePercent,
   ] = useSettingsStore(
     useShallow((state) => [
-      state.wheelOfAbilityWidth,
-      state.wheelOfAbilityHeight,
-      state.wheelOfAbilityNoSensetiveZone,
+      state.deviceWidth,
+      state.deviceHeight,
+      state.wheelOfAbilityWidthPercent,
+      state.wheelOfAbilityHeightPercent,
+      state.wheelOfAbilityNoSensetiveZonePercent,
     ])
   );
+  const wheelOfAbilityWidth = (deviceWidth * wheelOfAbilityWidthPercent) / 100;
+  const wheelOfAbilityHeight =
+    (deviceWidth * wheelOfAbilityHeightPercent) / 100;
 
   const [wheelAbilityAngle, setWheelAbilityAngle] = useGameStore(
     useShallow((state) => [state.wheelAbilityAngle, state.setWheelAbilityAngle])
@@ -26,8 +33,8 @@ export default function WheelOfAbility() {
   const [isShow, setIsShow] = useState(false);
   const [startPositionX, setStartPositionX] = useState(0);
   const [startPositionY, setStartPositionY] = useState(0);
-  const [positionX, setPositionX] = useState(window.innerWidth - wheelOffset);
-  const [positionY, setPositionY] = useState(window.innerHeight - wheelOffset);
+  const [positionX, setPositionX] = useState(deviceWidth - wheelOffset);
+  const [positionY, setPositionY] = useState(deviceHeight - wheelOffset);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -45,8 +52,8 @@ export default function WheelOfAbility() {
     window.addEventListener(
       "resize",
       async () => {
-        setPositionX(window.innerWidth - wheelOffset);
-        setPositionY(window.innerHeight - wheelOffset);
+        setPositionX(deviceWidth - wheelOffset);
+        setPositionY(deviceHeight - wheelOffset);
       },
       { signal: controller.signal }
     );
@@ -75,8 +82,10 @@ export default function WheelOfAbility() {
         const allowAreaY = wheelOfAbilityHeight * Math.abs(cos);
 
         if (
-          Math.abs(dX) < (wheelOfAbilityNoSensetiveZone * allowAreaX) / 100 &&
-          Math.abs(dY) < (wheelOfAbilityNoSensetiveZone * allowAreaY) / 100
+          Math.abs(dX) <
+            (wheelOfAbilityNoSensetiveZonePercent * allowAreaX) / 100 &&
+          Math.abs(dY) <
+            (wheelOfAbilityNoSensetiveZonePercent * allowAreaY) / 100
         ) {
           return;
         }

@@ -4,20 +4,52 @@ import "./App.css";
 import DirectionButton from "./ui/direction-and-speed-controller/DirectionAndSpeedController.tsx";
 import Hero from "./ui/hero/Hero.tsx";
 import WheelOfAbility from "./ui/wheel-of-ability/WheelOfAbility.tsx";
+import { useSettingsStore } from "./store/settings.ts";
+import { useShallow } from "zustand/shallow";
 
 function App() {
-  const [cw, setCW] = useState(window.innerWidth); //cw -canvas width
-  const [ch, setCH] = useState(window.innerHeight); //ch -canvas height
+  const [isLandscape, setIsLandscape] = useState(
+    window.matchMedia("(orientation: landscape)").matches
+  );
+
+  const [deviceWidth, setDeviceWidth, deviceHeight, setDeviceHeight] =
+    useSettingsStore(
+      useShallow((state) => [
+        state.deviceWidth,
+        state.setDeviceWidth,
+        state.deviceHeight,
+        state.setDeviceHeight,
+      ])
+    );
 
   useEffect(() => {
     const controller = new AbortController();
     window.addEventListener(
       "resize",
       async () => {
-        const windowY = window.innerHeight;
         const windowX = window.innerWidth;
-        setCW(windowX);
-        setCH(windowY);
+        const windowY = window.innerHeight;
+
+        setDeviceWidth(windowX);
+        setDeviceHeight(windowY);
+      },
+      { signal: controller.signal }
+    );
+    window.matchMedia("(orientation: landscape)").addEventListener(
+      "change",
+      (e) => {
+        const isLandscape = e.matches;
+
+        if (isLandscape) {
+          setIsLandscape(true);
+          const windowX = window.innerWidth;
+          const windowY = window.innerHeight;
+
+          setDeviceWidth(windowX);
+          setDeviceHeight(windowY);
+        } else {
+          setIsLandscape(false);
+        }
       },
       { signal: controller.signal }
     );
@@ -27,13 +59,19 @@ function App() {
     };
   }, []);
 
-  return (
+  return isLandscape ? (
     <div className='app'>
-      <canvas height={ch} width={cw} />
+      <canvas height={deviceHeight} width={deviceWidth} />
       <Hero />
       <DirectionButton />
       <WheelOfAbility />
       <PWABadge />
+    </div>
+  ) : (
+    <div className='app-need-to-landscape'>
+      <div>Turn Your device to landscape orintation</div>
+
+      <div className='device-concept'>&#11118;</div>
     </div>
   );
 }

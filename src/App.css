@@ -5,6 +5,37 @@
   overflow: hidden;
 }
 
+.app-need-to-landscape {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+  gap: 48px;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  .device-concept {
+    width: 48px;
+    height: 96px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    animation: 2s ease-in 2s infinite both running turn;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    font-size: 24px;
+  }
+}
+
+@keyframes turn {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(90deg);
+  }
+}
+
 canvas {
   background-color: rgb(255, 255, 255);
 }

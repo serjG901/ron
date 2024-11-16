@@ -6,20 +6,25 @@ import { useSettingsStore } from "../../store/settings";
 
 export default function DirectionAndSpeedController() {
   const [
-    directionAndSpeedControllerWidth,
-    directionAndSpeedControllerHeight,
-    directionAndSpeedControllerOverflowZone,
-    directionAndSpeedControllerNoSensetiveZone,
+    deviceWidth,
+    directionAndSpeedControllerWidthPercent,
+    directionAndSpeedControllerOverflowZonePercent,
+    directionAndSpeedControllerNoSensetiveZonePercent,
     directionAndSpeedControllerAreaPercent,
   ] = useSettingsStore(
     useShallow((state) => [
-      state.directionAndSpeedControllerWidth,
-      state.directionAndSpeedControllerHeight,
-      state.directionAndSpeedControllerOverflowZone,
-      state.directionAndSpeedControllerNoSensetiveZone,
+      state.deviceWidth,
+      state.directionAndSpeedControllerWidthPercent,
+      state.directionAndSpeedControllerOverflowZonePercent,
+      state.directionAndSpeedControllerNoSensetiveZonePercent,
       state.directionAndSpeedControllerAreaPercent,
     ])
   );
+
+  const directionAndSpeedControllerWidth =
+    (deviceWidth * directionAndSpeedControllerWidthPercent) / 100;
+  const directionAndSpeedControllerHeight =
+    (deviceWidth * directionAndSpeedControllerWidthPercent) / 100;
 
   const [moveAngle, setMoveAngle, moveSpeed, setMoveSpeed] = useGameStore(
     useShallow((state) => [
@@ -114,9 +119,11 @@ export default function DirectionAndSpeedController() {
           dY < -allowAreaY ? -allowAreaY : dY > allowAreaY ? allowAreaY : dY;
         if (
           Math.abs(dX) <
-            (directionAndSpeedControllerNoSensetiveZone * allowAreaX) / 100 &&
+            (directionAndSpeedControllerNoSensetiveZonePercent * allowAreaX) /
+              100 &&
           Math.abs(dY) <
-            (directionAndSpeedControllerNoSensetiveZone * allowAreaY) / 100
+            (directionAndSpeedControllerNoSensetiveZonePercent * allowAreaY) /
+              100
         ) {
           setMoveSpeed(0);
           setDirectionAndSpeedControllerCenterX(50);
@@ -137,14 +144,14 @@ export default function DirectionAndSpeedController() {
           Math.round(
             50 -
               (calcDX / directionAndSpeedControllerWidth) *
-                (50 + directionAndSpeedControllerOverflowZone)
+                (50 + directionAndSpeedControllerOverflowZonePercent)
           )
         );
         setDirectionAndSpeedControllerCenterY(
           Math.round(
             50 -
               (calcDY / directionAndSpeedControllerHeight) *
-                (50 + directionAndSpeedControllerOverflowZone)
+                (50 + directionAndSpeedControllerOverflowZonePercent)
           )
         );
       },
