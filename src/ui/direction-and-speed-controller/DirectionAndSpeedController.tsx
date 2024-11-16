@@ -6,15 +6,15 @@ import { useSettingsStore } from "../../store/settings";
 
 export default function DirectionAndSpeedController() {
   const [
-    deviceWidth,
-    directionAndSpeedControllerWidthPercent,
+    deviceHeight,
+    directionAndSpeedControllerHeightPercent,
     directionAndSpeedControllerOverflowZonePercent,
     directionAndSpeedControllerNoSensetiveZonePercent,
     directionAndSpeedControllerAreaPercent,
   ] = useSettingsStore(
     useShallow((state) => [
-      state.deviceWidth,
-      state.directionAndSpeedControllerWidthPercent,
+      state.deviceHeight,
+      state.directionAndSpeedControllerHeightPercent,
       state.directionAndSpeedControllerOverflowZonePercent,
       state.directionAndSpeedControllerNoSensetiveZonePercent,
       state.directionAndSpeedControllerAreaPercent,
@@ -22,9 +22,8 @@ export default function DirectionAndSpeedController() {
   );
 
   const directionAndSpeedControllerWidth =
-    (deviceWidth * directionAndSpeedControllerWidthPercent) / 100;
-  const directionAndSpeedControllerHeight =
-    (deviceWidth * directionAndSpeedControllerWidthPercent) / 100;
+    (deviceHeight * directionAndSpeedControllerHeightPercent) / 100;
+  const directionAndSpeedControllerHeight = directionAndSpeedControllerWidth;
 
   const [moveAngle, setMoveAngle, moveSpeed, setMoveSpeed] = useGameStore(
     useShallow((state) => [

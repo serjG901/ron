@@ -24,6 +24,13 @@ function App() {
 
   useEffect(() => {
     const controller = new AbortController();
+    if (isLandscape) {
+      const windowX = window.innerWidth;
+      const windowY = window.innerHeight;
+
+      setDeviceWidth(windowX);
+      setDeviceHeight(windowY);
+    }
     window.addEventListener(
       "resize",
       async () => {

@@ -57,11 +57,11 @@ export const useSettingsStore = create<SettingsStore>()(
         deviceHeight: 0,
         setDeviceHeight: (deviceHeight) => set({ deviceHeight }),
 
-        directionAndSpeedControllerWidthPercent: 10,
+        directionAndSpeedControllerWidthPercent: 25,
         setDirectionAndSpeedControllerWidthPercent: (
           directionAndSpeedControllerWidthPercent
         ) => set({ directionAndSpeedControllerWidthPercent }),
-        directionAndSpeedControllerHeightPercent: 10,
+        directionAndSpeedControllerHeightPercent: 25,
         setDirectionAndSpeedControllerHeightPercent: (
           directionAndSpeedControllerHeightPercent
         ) => set({ directionAndSpeedControllerHeightPercent }),
@@ -83,10 +83,10 @@ export const useSettingsStore = create<SettingsStore>()(
         heroHeight: 96,
         setHeroHeight: (heroHeight) => set({ heroHeight }),
 
-        wheelOfAbilityWidthPercent: 20,
+        wheelOfAbilityWidthPercent: 40,
         setWheelOfAbilityWidthPercent: (wheelOfAbilityWidthPercent) =>
           set({ wheelOfAbilityWidthPercent }),
-        wheelOfAbilityHeightPercent: 20,
+        wheelOfAbilityHeightPercent: 40,
         setWheelOfAbilityHeightPercent: (wheelOfAbilityHeightPercent) =>
           set({ wheelOfAbilityHeightPercent }),
         wheelOfAbilityOverflowZonePercent: 50,
@@ -101,7 +101,7 @@ export const useSettingsStore = create<SettingsStore>()(
     },
     {
       name: `${appName}-game-settings`,
-      version: 2,
+      version: 7,
     }
   )
 );

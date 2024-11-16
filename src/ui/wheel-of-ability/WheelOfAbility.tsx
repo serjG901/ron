@@ -10,7 +10,6 @@ export default function WheelOfAbility() {
   const [
     deviceWidth,
     deviceHeight,
-    wheelOfAbilityWidthPercent,
     wheelOfAbilityHeightPercent,
     wheelOfAbilityNoSensetiveZonePercent,
   ] = useSettingsStore(
@@ -22,9 +21,9 @@ export default function WheelOfAbility() {
       state.wheelOfAbilityNoSensetiveZonePercent,
     ])
   );
-  const wheelOfAbilityWidth = (deviceWidth * wheelOfAbilityWidthPercent) / 100;
-  const wheelOfAbilityHeight =
-    (deviceWidth * wheelOfAbilityHeightPercent) / 100;
+  const wheelOfAbilityWidth =
+    (deviceHeight * wheelOfAbilityHeightPercent) / 100;
+  const wheelOfAbilityHeight = wheelOfAbilityWidth;
 
   const [wheelAbilityAngle, setWheelAbilityAngle] = useGameStore(
     useShallow((state) => [state.wheelAbilityAngle, state.setWheelAbilityAngle])
