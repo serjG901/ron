@@ -101,7 +101,7 @@ export const useSettingsStore = create<SettingsStore>()(
     },
     {
       name: `${appName}-game-settings`,
-      version: 1,
+      version: 2,
     }
   )
 );
