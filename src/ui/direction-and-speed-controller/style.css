@@ -4,7 +4,7 @@
   left: 0;
   width: var(--self-width);
   height: 100dvh;
-  background-color: hsla(0 0 10 / 10%);
+ /*background-color: hsla(0 0 10 / 10%);*/
 }
 
 .direction-and-speed-controller-zone {
