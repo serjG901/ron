@@ -128,9 +128,7 @@ export default function WheelOfAbility() {
           } as React.CSSProperties
         }
       >
-        <div>
-          <div>a{wheelAbilityAngle}</div>
-        </div>
+        <div></div>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, i, arr) => {
           return (
             <div
