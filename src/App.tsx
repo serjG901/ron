@@ -6,6 +6,8 @@ import Hero from "./ui/hero/Hero.tsx";
 import WheelOfAbility from "./ui/wheel-of-ability/WheelOfAbility.tsx";
 import { useSettingsStore } from "./store/settings.ts";
 import { useShallow } from "zustand/shallow";
+import { useGameStore } from "./store/game.ts";
+import CanvasComponent from "./Canvas.tsx";
 
 function App() {
   const [isLandscape, setIsLandscape] = useState(
@@ -21,6 +23,10 @@ function App() {
         state.setDeviceHeight,
       ])
     );
+
+  const [moveAngle, moveSpeed] = useGameStore(
+    useShallow((state) => [state.moveAngle, state.moveSpeed])
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -68,7 +74,12 @@ function App() {
 
   return isLandscape ? (
     <div className='app'>
-      <canvas height={deviceHeight} width={deviceWidth} />
+      <CanvasComponent
+        deviceHeight={deviceHeight}
+        deviceWidth={deviceWidth}
+        moveAngle={moveAngle}
+        moveSpeed={moveSpeed}
+      />
       <Hero />
       <DirectionButton />
       <WheelOfAbility />

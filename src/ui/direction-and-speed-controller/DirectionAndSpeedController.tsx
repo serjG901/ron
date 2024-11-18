@@ -34,7 +34,7 @@ export default function DirectionAndSpeedController() {
     ])
   );
 
-  const [isShow, setIsShow] = useState(true);
+  const [isShow, setIsShow] = useState<null | boolean>(null);
   const [startPositionX, setStartPositionX] = useState(
     (directionAndSpeedControllerWidth *
       (100 + directionAndSpeedControllerOverflowZonePercent)) /
@@ -57,6 +57,7 @@ export default function DirectionAndSpeedController() {
 
   useEffect(() => {
     const controller = new AbortController();
+    setTimeout(() => setIsShow(true), 1000, { signal: controller.signal });
     const area = document.getElementById(
       "direction-and-speed-controller-appear-area"
     )!;
@@ -179,7 +180,7 @@ export default function DirectionAndSpeedController() {
         className='direction-and-speed-controller-zone'
         style={
           {
-            "--opacity": isShow ? 1 : 0,
+            "--opacity": isShow === null ? "null" : isShow ? 1 : 0,
             "--self-width": directionAndSpeedControllerWidth * 2 + "px",
             "--self-height": directionAndSpeedControllerHeight * 2 + "px",
             "--x-position": startPositionX + "px",
