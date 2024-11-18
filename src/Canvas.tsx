@@ -76,9 +76,9 @@ const CanvasComponent: React.FC<CanvasComponentProps> = ({
       }
 
       function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
         images.forEach((image) => {
-          ctx.drawImage(ground, image.x, image.y, imageSize, imageSize);
+          ctx!.drawImage(ground, image.x, image.y, imageSize, imageSize);
         });
       }
 
