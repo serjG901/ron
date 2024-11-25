@@ -33,7 +33,7 @@
     height: var(--self-height);
     border-radius: calc(var(--self-width) / 2);
     background-color: var(--color-bg);
-    transition: all 50ms linear;
+    
   }
   @starting-style {
     opacity: 0;
